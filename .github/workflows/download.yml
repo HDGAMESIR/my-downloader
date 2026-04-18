@@ -1,0 +1,17 @@
+name: Download File
+
+on:
+  workflow_dispatch:  # این خط باعث می‌شود بتوانید workflow را به صورت دستی اجرا کنید
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the file
+        run: wget https://dl.google.com/android/repository/build-tools_r30.0.3-windows.zip
+        
+      - name: Upload the file as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-tools  # نام فایل نهایی
+          path: build-tools_r30.0.3-windows.zip
